@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--根据类型自动装配（注入），根据类中的属性名在IOC中找到相应的对象，若属性为接口则找其实现类，若实现类有多个且配置在同一个xml中会报错-->
+    <bean id="userController" class="com.atguigu.spring.iocxml.auto.controller.UserController" autowire="byType">
+
+    </bean>
+    <bean id="userService" class="com.atguigu.spring.iocxml.auto.sevice.UserServiceImpl" autowire="byType">
+
+    </bean>
+    <bean id="userDao" class="com.atguigu.spring.iocxml.auto.dao.UserDaoImpl">
+
+    </bean>
+
+    <!--根据名称自动装配，即类中的属性名跟xml配置中的id名一样才能装配，不推荐使用-->
+    <!--<bean id="userController" class="com.atguigu.spring.iocxml.auto.controller.UserController" autowire="byName">
+
+    </bean>
+    <bean id="userService" class="com.atguigu.spring.iocxml.auto.sevice.UserServiceImpl" autowire="byName">
+
+    </bean>
+    <bean id="userDao" class="com.atguigu.spring.iocxml.auto.dao.UserDaoImpl">
+
+    </bean>-->
+
+</beans>

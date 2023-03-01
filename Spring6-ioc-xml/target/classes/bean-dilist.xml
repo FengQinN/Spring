@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="emp" class="com.atguigu.spring.iocxml.ditest.Emp">
+        <property name="empName" value="牛马哥"></property>
+        <property name="age" value="12"></property>
+        <property name="dept" ref="dept"></property>
+    </bean>
+    <bean id="emp2" class="com.atguigu.spring.iocxml.ditest.Emp">
+        <property name="empName" value="蔡徐坤"></property>
+        <property name="age" value="18"></property>
+        <property name="dept" ref="dept"></property>
+    </bean>
+    <bean id="dept" class="com.atguigu.spring.iocxml.ditest.Dept">
+        <property name="deptName" value="牛马部"></property>
+        <property name="empList">
+            <list>
+                <ref bean="emp"></ref>
+                <ref bean="emp2"></ref>
+            </list>
+        </property>
+    </bean>
+</beans>

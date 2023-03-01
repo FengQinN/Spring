@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--创建两个类的对象、部门类和员工类-->
+    <!--内部bean方式注入对象-->
+    <bean id="dept" class="com.atguigu.spring.iocxml.ditest.Dept">
+        <property name="deptName" value="乱交部"></property>
+    </bean>
+    <bean id="emp" class="com.atguigu.spring.iocxml.ditest.Emp">
+        <property name="empName" value="牛马哥"></property>
+        <property name="age" value="12"></property>
+        <property name="dept" ref="dept"></property>
+    </bean>
+    <!--外部bean方式注入对象-->
+    <bean id="emp2" class="com.atguigu.spring.iocxml.ditest.Emp">
+        <property name="empName" value="小几把"></property>
+        <property name="age" value="19"></property>
+        <property name="dept">
+            <!--内部bean方式注入-->
+            <!--内部bean只能用于属性赋值，不能在外部通过IOC容器获取，因此可以省略id属性-->
+            <bean id="dept2" class="com.atguigu.spring.iocxml.ditest.Dept">
+                <property name="deptName" value="财务部"></property>
+            </bean>
+        </property>
+    </bean>
+
+    <!--级联赋值-->
+    <bean id="dept3" class="com.atguigu.spring.iocxml.ditest.Dept">
+        <property name="deptName" value="社交部"></property>
+    </bean>
+    <bean id="emp3" class="com.atguigu.spring.iocxml.ditest.Emp">
+        <property name="empName" value="小马"></property>
+        <property name="age" value="22"></property>
+        <property name="dept" ref="dept3"></property>
+        <property name="dept.deptName" value="交际部"></property>
+    </bean>
+
+</beans>
